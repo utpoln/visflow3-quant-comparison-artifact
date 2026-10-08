@@ -1,0 +1,10 @@
+=== NEXTFLOW ===
+[PIPELINE] main.nf | profile=standard
+[WORKDIR] /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/nextflow/work
+[PROCESS cf/3f732d] buildEdges (1)
+[PROCESS e1/27bdd2] naiveJoin (1)
+[PROCESS fb/90937f] naiveJoin (2)
+[PROCESS 48/5f9816] evaluate (2)
+[PROCESS ab/f06c47] evaluate (1)
+
+[SUCCESS] completed=5 failed=0 cached=0

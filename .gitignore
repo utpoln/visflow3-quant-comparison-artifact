@@ -1,0 +1,16 @@
+# Local tool installs — never commit, see README.md for setup
+venv/
+tools/
+nextflow
+__pycache__/
+*.pyc
+
+# Engine run-state / caches (re-created on every run, not meaningful to track)
+.snakemake/
+.nextflow/
+.nextflow.log*
+work/
+cwl/cachedir/
+
+# OS cruft
+.DS_Store

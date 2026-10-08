@@ -1,0 +1,40 @@
+[1;30mINFO[0m /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/venv/bin/cwltool 3.1.20251031082601
+[1;30mINFO[0m Resolved 'pipeline.cwl' to 'file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/cwl/pipeline.cwl'
+[1;30mINFO[0m [workflow ] start
+[1;30mINFO[0m [workflow ] starting step lookup
+[1;30mINFO[0m [step lookup] start
+[1;30mINFO[0m [job lookup] /private/tmp/docker_tmpp3jp2mo3$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/scripts/run_lookup.py \
+    --out \
+    go_details.json \
+    --input \
+    /private/tmp/docker_tmpsp2lbm40/stg0f51febd-33c4-4cd4-9937-6f82866ae7ea/go_terms.json
+[run_lookup] 7 rows -> go_details.json
+[1;30mINFO[0m [job lookup] Max memory used: 31MiB
+[1;30mINFO[0m [job lookup] completed success
+[1;30mINFO[0m [step lookup] completed success
+[1;30mINFO[0m [workflow ] starting step filter_sort
+[1;30mINFO[0m [step filter_sort] start
+[1;30mINFO[0m [job filter_sort] /private/tmp/docker_tmp28_0hnc1$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/scripts/run_filter_sort.py \
+    --out \
+    classified_terms.json \
+    --input \
+    /private/tmp/docker_tmphvqy9_vs/stgc292f3e8-9ebb-40b4-bfb8-9c3eab91f8a2/go_details.json
+[run_filter_sort] 7 rows -> classified_terms.json
+[1;30mINFO[0m [job filter_sort] completed success
+[1;30mINFO[0m [step filter_sort] completed success
+[1;30mINFO[0m [workflow ] completed success
+{
+    "classified_terms": {
+        "location": "file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/results/cwl_run_1/classified_terms.json",
+        "basename": "classified_terms.json",
+        "class": "File",
+        "checksum": "sha1$0db716b6ee45d7a3c2eb70b7a8fd6c9ea39e406c",
+        "size": 2117,
+        "path": "/Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/results/cwl_run_1/classified_terms.json"
+    }
+}[1;30mINFO[0m Final process status is success
+real 2.95
+user 1.60
+sys 0.23

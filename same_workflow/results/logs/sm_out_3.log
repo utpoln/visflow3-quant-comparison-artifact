@@ -1,0 +1,56 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                count
+---------------  -------
+all                    1
+filter_and_sort        1
+go_term_lookup         1
+total                  3
+
+Select jobs to execute...
+
+[Wed Oct  7 17:37:46 2026]
+rule go_term_lookup:
+    input: /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/data/go_terms.json
+    output: results/go_details.json
+    jobid: 2
+    reason: Missing output files: results/go_details.json
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+[run_lookup] 7 rows -> results/go_details.json
+[Wed Oct  7 17:37:48 2026]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:37:48 2026]
+rule filter_and_sort:
+    input: results/go_details.json
+    output: results/classified_terms.json
+    jobid: 1
+    reason: Missing output files: results/classified_terms.json; Input files updated by another job: results/go_details.json
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+[run_filter_sort] 7 rows -> results/classified_terms.json
+[Wed Oct  7 17:37:48 2026]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:37:48 2026]
+localrule all:
+    input: results/classified_terms.json
+    jobid: 0
+    reason: Input files updated by another job: results/classified_terms.json
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+[Wed Oct  7 17:37:48 2026]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2026-10-07T173746.796936.snakemake.log
+real 1.97
+user 0.66
+sys 0.18

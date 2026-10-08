@@ -1,0 +1,3 @@
+go_terms:
+  class: File
+  path: ../data/go_terms.json

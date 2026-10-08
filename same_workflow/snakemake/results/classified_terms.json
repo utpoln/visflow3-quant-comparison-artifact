@@ -1,0 +1,44 @@
+[
+  {
+    "go_id": "GO:0008150",
+    "label": "biological_process",
+    "namespace": "",
+    "definition": "A biological process is the execution of a genetically-encoded biological module or program. It consists of all the steps required to achieve the specific biological objective of the module. A biologi"
+  },
+  {
+    "go_id": "GO:0003674",
+    "label": "molecular_function",
+    "namespace": "",
+    "definition": "A molecular process that can be carried out by the action of a single macromolecular machine, usually via direct physical interactions with other molecular entities. Function in this sense denotes an "
+  },
+  {
+    "go_id": "GO:0005575",
+    "label": "cellular_component",
+    "namespace": "",
+    "definition": "A location, relative to cellular compartments and structures, occupied by a macromolecular machine. There are three types of cellular components described in the gene ontology: (1) the cellular anatom"
+  },
+  {
+    "go_id": "GO:0006281",
+    "label": "DNA repair",
+    "namespace": "",
+    "definition": "The process of restoring DNA after damage. Genomes are subject to damage by chemical and physical agents in the environment (e.g. UV and ionizing radiations, chemical mutagens, fungal and bacterial to"
+  },
+  {
+    "go_id": "GO:0006355",
+    "label": "regulation of DNA-templated transcription",
+    "namespace": "",
+    "definition": "Any process that modulates the frequency, rate or extent of cellular DNA-templated transcription."
+  },
+  {
+    "go_id": "GO:0003700",
+    "label": "DNA-binding transcription factor activity",
+    "namespace": "",
+    "definition": "A transcription regulator activity that modulates transcription of gene sets via selective and non-covalent binding to a specific double-stranded genomic DNA sequence (sometimes referred to as a motif"
+  },
+  {
+    "go_id": "GO:0005634",
+    "label": "nucleus",
+    "namespace": "",
+    "definition": "A membrane-bounded organelle of eukaryotic cells in which chromosomes are housed and replicated. In most cells, the nucleus contains all of the cell's chromosomes except the organellar chromosomes, an"
+  }
+]

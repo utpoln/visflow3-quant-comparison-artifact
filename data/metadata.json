@@ -1,0 +1,25 @@
+{
+  "sources": {
+    "cross_hybridizing_probe": {
+      "resource": "NCBI GEO GPL570 (Affymetrix HG-U133 Plus 2.0) platform annotation",
+      "url": "https://ftp.ncbi.nlm.nih.gov/geo/platforms/GPLnnn/GPL570/annot/GPL570.annot.gz",
+      "total_found": 427,
+      "sampled": 50
+    },
+    "shared_historical_alias": {
+      "resource": "NCBI Homo_sapiens.gene_info.gz Synonyms column",
+      "url": "https://ftp.ncbi.nlm.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz",
+      "total_found": 2665,
+      "sampled": 50
+    },
+    "hgnc_gene_split": {
+      "resource": "HGNC withdrawn-symbol report (MERGED_INTO_REPORT(S) column)",
+      "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/withdrawn.txt",
+      "total_found": 16,
+      "sampled": 16
+    }
+  },
+  "n_negative_cases": 116,
+  "n_positive_cases": 100,
+  "seed": 20260729
+}

@@ -1,0 +1,9 @@
+[PIPELINE] main.nf | profile=standard
+[WORKDIR] /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/same_workflow/nextflow/work
+[PROCESS 4c/20eda3] goTermLookup (1)
+[PROCESS 32/05ffa7] filterAndSort (1)
+
+[SUCCESS] completed=2 failed=0 cached=0
+real 9.24
+user 5.77
+sys 1.58

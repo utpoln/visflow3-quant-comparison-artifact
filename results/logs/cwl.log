@@ -1,0 +1,116 @@
+=== CWL (exact) ===
+[1;30mINFO[0m /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/venv/bin/cwltool 3.1.20251031082601
+[1;30mINFO[0m Resolved 'pipeline.cwl' to 'file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/cwl/pipeline.cwl'
+[1;30mINFO[0m [workflow ] start
+[1;30mINFO[0m [workflow ] starting step build_edges
+[1;30mINFO[0m [step build_edges] start
+[1;30mINFO[0m [job build_edges] /private/tmp/docker_tmpm1j0iju5$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/build_edges.py \
+    --out \
+    edges.csv \
+    --negative \
+    /private/tmp/docker_tmp7pfxozys/stgb2e29d9d-3127-4328-91d5-3ef363afc723/negative_cases.csv \
+    --positive \
+    /private/tmp/docker_tmp7pfxozys/stg31c3009a-1188-4be6-8270-c19dedb51683/positive_cases.csv
+[build_edges] wrote 394 edges to edges.csv
+[1;30mINFO[0m [job build_edges] completed success
+[1;30mINFO[0m [step build_edges] completed success
+[1;30mINFO[0m [workflow ] starting step naive_join
+[1;30mINFO[0m [step naive_join] start
+[1;30mINFO[0m [job naive_join] /private/tmp/docker_tmpb1o5uukt$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/naive_join.py \
+    --out \
+    groups.csv \
+    --edges \
+    /private/tmp/docker_tmp0kt82pik/stgc84b7fb6-da76-452d-9048-95eed61e6210/edges.csv \
+    --mode \
+    exact
+[naive_join:exact] wrote 586 node assignments to groups.csv
+[1;30mINFO[0m [job naive_join] completed success
+[1;30mINFO[0m [step naive_join] completed success
+[1;30mINFO[0m [workflow ] starting step evaluate
+[1;30mINFO[0m [step evaluate] start
+[1;30mINFO[0m [job evaluate] /private/tmp/docker_tmppa04qn6i$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/evaluate.py \
+    --out \
+    result.json \
+    --groups \
+    /private/tmp/docker_tmpt70njx7x/stg9bd91edf-ce00-45a9-8ffe-8ed15f14d2fc/groups.csv \
+    --mode \
+    exact \
+    --negative \
+    /private/tmp/docker_tmpt70njx7x/stg1d883818-f8ac-4ef6-8a31-9898ce11844b/negative_cases.csv \
+    --positive \
+    /private/tmp/docker_tmpt70njx7x/stg0fc0c6d7-18cf-43bf-8ef2-54e3209f88d1/positive_cases.csv
+[evaluate:exact] false_merges=0/116  recovered=0/100
+[1;30mINFO[0m [job evaluate] completed success
+[1;30mINFO[0m [step evaluate] completed success
+[1;30mINFO[0m [workflow ] completed success
+{
+    "result": {
+        "location": "file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/results/cwl_exact/result.json",
+        "basename": "result.json",
+        "class": "File",
+        "checksum": "sha1$b27f672d7cda7409d58ed635b3b7d19e13109014",
+        "size": 102,
+        "path": "/Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/results/cwl_exact/result.json"
+    }
+}[1;30mINFO[0m Final process status is success
+=== CWL (transitive) ===
+[1;30mINFO[0m /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/venv/bin/cwltool 3.1.20251031082601
+[1;30mINFO[0m Resolved 'pipeline.cwl' to 'file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/cwl/pipeline.cwl'
+[1;30mINFO[0m [workflow ] start
+[1;30mINFO[0m [workflow ] starting step build_edges
+[1;30mINFO[0m [step build_edges] start
+[1;30mINFO[0m [job build_edges] /private/tmp/docker_tmp6wflgx1a$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/build_edges.py \
+    --out \
+    edges.csv \
+    --negative \
+    /private/tmp/docker_tmpmdxq4xe9/stge7884a32-d79c-4ed7-976a-8b24478260a1/negative_cases.csv \
+    --positive \
+    /private/tmp/docker_tmpmdxq4xe9/stg7c3e5da0-a17a-4452-8396-7d4c903dc94e/positive_cases.csv
+[build_edges] wrote 394 edges to edges.csv
+[1;30mINFO[0m [job build_edges] completed success
+[1;30mINFO[0m [step build_edges] completed success
+[1;30mINFO[0m [workflow ] starting step naive_join
+[1;30mINFO[0m [step naive_join] start
+[1;30mINFO[0m [job naive_join] /private/tmp/docker_tmptgdxjx2i$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/naive_join.py \
+    --out \
+    groups.csv \
+    --edges \
+    /private/tmp/docker_tmppg4vgx3y/stg7ea8f99f-92c9-41d2-8c3d-690e4f7d9ca3/edges.csv \
+    --mode \
+    transitive
+[naive_join:transitive] wrote 586 node assignments to groups.csv
+[1;30mINFO[0m [job naive_join] completed success
+[1;30mINFO[0m [step naive_join] completed success
+[1;30mINFO[0m [workflow ] starting step evaluate
+[1;30mINFO[0m [step evaluate] start
+[1;30mINFO[0m [job evaluate] /private/tmp/docker_tmp0nsqfkr5$ python3 \
+    /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/evaluate.py \
+    --out \
+    result.json \
+    --groups \
+    /private/tmp/docker_tmp50flpaw9/stg95162671-bfeb-4cee-b407-6632f4d10c7b/groups.csv \
+    --mode \
+    transitive \
+    --negative \
+    /private/tmp/docker_tmp50flpaw9/stgf07457e9-29a1-4b0a-ba23-2896bce460fe/negative_cases.csv \
+    --positive \
+    /private/tmp/docker_tmp50flpaw9/stge1b8a02d-da4f-415a-8e76-75e83db2d37d/positive_cases.csv
+[evaluate:transitive] false_merges=116/116  recovered=100/100
+[1;30mINFO[0m [job evaluate] completed success
+[1;30mINFO[0m [step evaluate] completed success
+[1;30mINFO[0m [workflow ] completed success
+{
+    "result": {
+        "location": "file:///Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/results/cwl_transitive/result.json",
+        "basename": "result.json",
+        "class": "File",
+        "checksum": "sha1$5ea963d68b66992038b6fecd8eb5124ca9501969",
+        "size": 111,
+        "path": "/Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/results/cwl_transitive/result.json"
+    }
+}[1;30mINFO[0m Final process status is success

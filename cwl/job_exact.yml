@@ -1,0 +1,7 @@
+negative:
+  class: File
+  path: ../data/negative_cases.csv
+positive:
+  class: File
+  path: ../data/positive_cases.csv
+mode: exact

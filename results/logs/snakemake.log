@@ -1,0 +1,106 @@
+=== SNAKEMAKE ===
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job            count
+-----------  -------
+all                1
+build_edges        1
+evaluate           2
+naive_join         2
+total              6
+
+Select jobs to execute...
+
+[Wed Oct  7 17:30:59 2026]
+rule build_edges:
+    input: /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv, /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv
+    output: results/edges.csv
+    jobid: 3
+    reason: Missing output files: results/edges.csv
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+python3 /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/build_edges.py --negative /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv --positive /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv --out results/edges.csv
+[build_edges] wrote 394 edges to results/edges.csv
+[Wed Oct  7 17:30:59 2026]
+Finished job 3.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:30:59 2026]
+rule naive_join:
+    input: results/edges.csv
+    output: results/transitive_groups.csv
+    jobid: 5
+    reason: Missing output files: results/transitive_groups.csv; Input files updated by another job: results/edges.csv
+    wildcards: mode=transitive
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+python3 /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/naive_join.py --edges results/edges.csv --mode transitive --out results/transitive_groups.csv
+[naive_join:transitive] wrote 586 node assignments to results/transitive_groups.csv
+[Wed Oct  7 17:31:00 2026]
+Finished job 5.
+2 of 6 steps (33%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:31:00 2026]
+rule evaluate:
+    input: /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv, /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv, results/transitive_groups.csv
+    output: results/transitive_result.json
+    jobid: 4
+    reason: Missing output files: results/transitive_result.json; Input files updated by another job: results/transitive_groups.csv
+    wildcards: mode=transitive
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+python3 /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/evaluate.py --negative /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv --positive /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv --groups results/transitive_groups.csv --mode transitive --out results/transitive_result.json
+[evaluate:transitive] false_merges=116/116  recovered=100/100
+[Wed Oct  7 17:31:00 2026]
+Finished job 4.
+3 of 6 steps (50%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:31:00 2026]
+rule naive_join:
+    input: results/edges.csv
+    output: results/exact_groups.csv
+    jobid: 2
+    reason: Missing output files: results/exact_groups.csv; Input files updated by another job: results/edges.csv
+    wildcards: mode=exact
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+python3 /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/naive_join.py --edges results/edges.csv --mode exact --out results/exact_groups.csv
+[naive_join:exact] wrote 586 node assignments to results/exact_groups.csv
+[Wed Oct  7 17:31:00 2026]
+Finished job 2.
+4 of 6 steps (67%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:31:00 2026]
+rule evaluate:
+    input: /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv, /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv, results/exact_groups.csv
+    output: results/exact_result.json
+    jobid: 1
+    reason: Missing output files: results/exact_result.json; Input files updated by another job: results/exact_groups.csv
+    wildcards: mode=exact
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+python3 /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/scripts/evaluate.py --negative /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/negative_cases.csv --positive /Users/kallolnaha/Documents/mix_projects/visual_workflow_2026/quant_comparison_eval/data/positive_cases.csv --groups results/exact_groups.csv --mode exact --out results/exact_result.json
+[evaluate:exact] false_merges=0/116  recovered=0/100
+[Wed Oct  7 17:31:00 2026]
+Finished job 1.
+5 of 6 steps (83%) done
+Select jobs to execute...
+
+[Wed Oct  7 17:31:00 2026]
+localrule all:
+    input: results/exact_result.json, results/transitive_result.json
+    jobid: 0
+    reason: Input files updated by another job: results/exact_result.json, results/transitive_result.json
+    resources: tmpdir=/var/folders/h1/b__b0n594v513p_vgd2j_hwc0000gn/T
+
+[Wed Oct  7 17:31:00 2026]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: .snakemake/log/2026-10-07T173059.752462.snakemake.log

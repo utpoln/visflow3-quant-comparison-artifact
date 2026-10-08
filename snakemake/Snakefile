@@ -1,0 +1,53 @@
+# Snakemake pipeline: the naive-integration baseline for the quantitative
+# system comparison (dissertation Table 2.1 / FGCS Table tab:compare).
+#
+# This is the ordinary, idiomatic way to resolve drifted gene identifiers
+# in Snakemake: a rule that builds a correspondence table from whatever
+# alias/synonym data is on hand, then a join rule. Snakemake orchestrates
+# *when* each script runs and *what* depends on what — it has no identity-
+# mediation primitive of its own, so the join logic is exactly what any
+# Snakemake user would write by hand (scripts/naive_join.py).
+#
+# Run with:  snakemake --cores 1 --directory . -s Snakefile
+import os
+
+SCRIPTS = os.path.join(os.path.dirname(workflow.basedir), "scripts")
+DATA = os.path.join(os.path.dirname(workflow.basedir), "data")
+RESULTS = "results"
+
+MODES = ["exact", "transitive"]
+
+rule all:
+    input:
+        expand(f"{RESULTS}/{{mode}}_result.json", mode=MODES)
+
+rule build_edges:
+    input:
+        negative=f"{DATA}/negative_cases.csv",
+        positive=f"{DATA}/positive_cases.csv"
+    output:
+        f"{RESULTS}/edges.csv"
+    shell:
+        "python3 {SCRIPTS}/build_edges.py --negative {input.negative} "
+        "--positive {input.positive} --out {output}"
+
+rule naive_join:
+    input:
+        edges=f"{RESULTS}/edges.csv"
+    output:
+        f"{RESULTS}/{{mode}}_groups.csv"
+    shell:
+        "python3 {SCRIPTS}/naive_join.py --edges {input.edges} "
+        "--mode {wildcards.mode} --out {output}"
+
+rule evaluate:
+    input:
+        negative=f"{DATA}/negative_cases.csv",
+        positive=f"{DATA}/positive_cases.csv",
+        groups=f"{RESULTS}/{{mode}}_groups.csv"
+    output:
+        f"{RESULTS}/{{mode}}_result.json"
+    shell:
+        "python3 {SCRIPTS}/evaluate.py --negative {input.negative} "
+        "--positive {input.positive} --groups {input.groups} "
+        "--mode {wildcards.mode} --out {output}"

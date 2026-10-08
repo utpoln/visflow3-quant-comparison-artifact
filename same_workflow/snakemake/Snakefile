@@ -1,0 +1,26 @@
+# Same workflow as VisFlow's "GO Term Lookup -> Namespace Classification"
+# (necto id a7677b74-8b11-44b6-aa47-8a070bc63da3), ported to Snakemake,
+# calling the exact same registered library code (scripts/lib_*.py).
+import os
+SCRIPTS = os.path.join(os.path.dirname(os.path.dirname(workflow.basedir)), "same_workflow", "scripts")
+DATA = os.path.join(os.path.dirname(os.path.dirname(workflow.basedir)), "same_workflow", "data")
+
+rule all:
+    input:
+        "results/classified_terms.json"
+
+rule go_term_lookup:
+    input:
+        f"{DATA}/go_terms.json"
+    output:
+        "results/go_details.json"
+    shell:
+        "python3 {SCRIPTS}/run_lookup.py --input {input} --out {output}"
+
+rule filter_and_sort:
+    input:
+        "results/go_details.json"
+    output:
+        "results/classified_terms.json"
+    shell:
+        "python3 {SCRIPTS}/run_filter_sort.py --input {input} --out {output}"
