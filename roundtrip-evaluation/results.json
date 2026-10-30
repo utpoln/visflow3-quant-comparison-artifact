@@ -1,0 +1,26 @@
+{
+  "generated_by": "verify_roundtrip.mjs, run against a restored copy of the real VisFlow production database",
+  "total_corpus": 449,
+  "corpus_composition": {
+    "taverna_seeded": 106,
+    "paper_examples": 5,
+    "developer_user_created": 338
+  },
+  "excluded_empty_or_versionless": 3,
+  "sampled": 446,
+  "filtered_unsupported_construct": 57,
+  "other_translate_error": 0,
+  "in_scope": 389,
+  "round_trip_exact": 389,
+  "round_trip_mismatch": 0,
+  "round_trip_rate_in_scope": "389/389 = 100%",
+  "unsupported_reasons": {
+    "construct not attempted (If, Repeat, Procedure, IO, Wait On, Connect)": 27,
+    "unrecognized Data shape (resource type not yet supported: ftp, excel, xml, database, web_wrapper, web_scraper)": 16,
+    "expected exactly one sink, found 2": 7,
+    "Combine has no explicit, translator-inspectable join key": 4,
+    "unrecognized Adapter shape (no function)": 1,
+    "unrecognized sink shape (2 inputs, expected 1)": 1,
+    "Fusion has no explicit, translator-inspectable join key": 1
+  }
+}

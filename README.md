@@ -20,6 +20,14 @@ Two independent experiments:
    registered library code, ported to all three systems and timed against
    VisFlow 2.0 and VisFlow 3.0 directly. See `same_workflow/RESULTS.md`.
 
+A third, unrelated evaluation also lives in this repo as a matter of
+convenience, not because it's part of the Nextflow/Snakemake/CWL comparison:
+
+3. **VisFlow 3.0 Φ/Ψ round-trip fidelity** (`roundtrip-evaluation/`) — backs
+   Chapter 6's "Empirical Support for the Projection" claim, re-run against
+   a restored copy of the real production workflow corpus. See
+   `roundtrip-evaluation/README.md`.
+
 `COMPARISON_FRAMEWORK.md` documents the full metric-by-metric methodology
 behind both: what's measured, what's objectively counted, what's qualitative,
 and what's explicitly excluded as unfair or unmeasurable.
